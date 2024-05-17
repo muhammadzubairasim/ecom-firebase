@@ -1,14 +1,16 @@
 import 'package:ecom/app.dart';
+import 'package:ecom/utils/constants/colors.dart';
 import 'package:ecom/utils/constants/sizes.dart';
 import 'package:ecom/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HeaderAppbar extends StatelessWidget  implements PreferredSize{
   const HeaderAppbar(
       {super.key,
       this.leadingIcon,
       this.customTitle,
-      this.backArrow = null,
+      this.backArrow = false,
       this.customActions,
       this.leadingCallback});
   final Widget? customTitle;
@@ -21,11 +23,14 @@ class HeaderAppbar extends StatelessWidget  implements PreferredSize{
     return Padding(
       padding: const EdgeInsets.only(left: TSizes.defaultSpace, right: TSizes.defaultSpace , top: TSizes.defaultSpace),
       child: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: backArrow!=false?true: false,
         leading: backArrow != null
             ? IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(Icons.arrow_back,color: TColors.white,),
+                highlightColor: Colors.white,
               )
             : leadingIcon != null
                 ? IconButton(

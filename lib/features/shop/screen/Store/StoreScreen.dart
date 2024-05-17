@@ -10,7 +10,9 @@ import 'package:ecom/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 
 class StoreScreen extends StatelessWidget {
-  StoreScreen({super.key});
+  StoreScreen({super.key,
+  this.back = false
+  });
 
   final List<String> imagePaths = [
     TImages.jordanLogo,
@@ -31,13 +33,14 @@ class StoreScreen extends StatelessWidget {
     Text("Electronics"),
     Text("Cloths")
   ];
-
+  bool back;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabHeading.length,
       child: Scaffold(
         appBar: HeaderAppbar(
+          backArrow: false,
           customTitle: Text(
             "Store",
             style: Theme.of(context).textTheme.headlineMedium,
@@ -77,7 +80,7 @@ class StoreScreen extends StatelessWidget {
                         child: GridView.builder(
                             itemCount: imagePaths.length,
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            // physics: NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount:
@@ -105,37 +108,40 @@ class StoreScreen extends StatelessWidget {
               ];
             },
             body: TabBarView(
+              // physics: AlwaysScrollableScrollPhysics(),
               children: [
-                Tabbar_Structure(
-                  tabbarWidgetList: [
-                    Store_tabbar_Card(
-                      imagePaths: imagePaths[0],
-                      titles: titles[0],
-                      subtitles: subtitles[0],
-                      cardBottomImages: [
-                        TImages.productImage1,
-                        TImages.productImage2,
-                        TImages.productImage3
-                      ],
-                    ),
-                    Store_tabbar_Card(
-                      imagePaths: imagePaths[1],
-                      titles: titles[1],
-                      subtitles: subtitles[1],
-                      cardBottomImages: [
-                        TImages.productImage4,
-                        TImages.productImage5,
-                        TImages.productImage6
-                      ],
-                    ),
-                    ViewMore_Divider(title: "You Might Like "),
-                    Grid_Builder(
-                        cardTitleMain: "Green Sports SHoes ",
-                        store: "Nike",
-                        imagePath: TImages.productImage1,
-                        endPrice: 100,
-                        startPrice: 50),
-                  ],
+                GestureDetector(
+                  child: Tabbar_Structure(
+                    tabbarWidgetList: [
+                      Store_tabbar_Card(
+                        imagePaths: imagePaths[0],
+                        titles: titles[0],
+                        subtitles: subtitles[0],
+                        cardBottomImages: [
+                          TImages.productImage1,
+                          TImages.productImage2,
+                          TImages.productImage3
+                        ],
+                      ),
+                      Store_tabbar_Card(
+                        imagePaths: imagePaths[1],
+                        titles: titles[1],
+                        subtitles: subtitles[1],
+                        cardBottomImages: [
+                          TImages.productImage4,
+                          TImages.productImage5,
+                          TImages.productImage6
+                        ],
+                      ),
+                      ViewMore_Divider(title: "You Might Like "),
+                      Grid_Builder(
+                          cardTitleMain: "Green Sports SHoes ",
+                          store: "Nike",
+                          imagePath: TImages.productImage1,
+                          endPrice: 100,
+                          startPrice: 50),
+                    ],
+                  ),
                 ),
                 Tabbar_Structure(
                   tabbarWidgetList: [
@@ -250,6 +256,7 @@ class Tabbar_Structure extends StatelessWidget {
     return ListView(
       controller: scrollController,
       shrinkWrap: true,
+      // physics: NeverScrollableScrollPhysics(),
       children: tabbarWidgetList.map((e) => e).toList(),
     );
   }
