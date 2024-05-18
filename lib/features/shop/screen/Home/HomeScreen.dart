@@ -53,7 +53,9 @@ class HomeScreen extends StatelessWidget {
                             .apply(color: TColors.white),
                       ),
                       Hortzontal_Scroll(),
-                      SizedBox(height: 20,)
+                      SizedBox(
+                        height: 20,
+                      )
                     ],
                   ),
                 )
@@ -102,28 +104,24 @@ class Hortzontal_Scroll extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 16.0),
                   child: Column(
-                    mainAxisAlignment:
-                        MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                           height: 50,
                           width: 50,
                           decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(50),
+                            borderRadius: BorderRadius.circular(50),
                             color: Colors.white,
                           ),
                           child: const Image(
-                            image:
-                                AssetImage(TImages.appleLogo),
+                            image: AssetImage(TImages.appleLogo),
                             height: 50,
                             width: 50,
                             fit: BoxFit.cover,
                             alignment: Alignment.center,
                           )),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8.0),
+                        padding: const EdgeInsets.only(top: 8.0),
                         child: Container(
                           width: 50,
                           alignment: Alignment.center,
@@ -139,7 +137,6 @@ class Hortzontal_Scroll extends StatelessWidget {
                     ],
                   ),
                 ),
-
               ],
             );
           },

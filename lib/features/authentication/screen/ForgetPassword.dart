@@ -1,6 +1,8 @@
+import 'package:ecom/features/authentication/controller/forgetPasswordController.dart';
 import 'package:ecom/features/authentication/screen/ResetVerification.dart';
 import 'package:ecom/utils/constants/sizes.dart';
 import 'package:ecom/utils/constants/text_strings.dart';
+import 'package:ecom/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +11,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace * 2),
@@ -33,7 +36,10 @@ class ForgetPassword extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
               child: Form(
+                key: controller.forgetPasswordFormKey,
                 child: TextFormField(
+                  controller: controller.email,
+                  validator: TValidator.validateEmail,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.arrow_right_rounded),
                     labelText: TTexts.email,
@@ -45,9 +51,7 @@ class ForgetPassword extends StatelessWidget {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(ResetVerification());
-                    },
+                    onPressed: () => controller.sendPasswordResetEmail(),
                     child: Text(TTexts.submit),
                   ),
                 ),

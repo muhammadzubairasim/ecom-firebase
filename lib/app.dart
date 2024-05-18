@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ecom/utils/constants/text_strings.dart';
 import 'package:ecom/utils/theme/theme.dart';
+import 'package:ecom/bindings/general_bindings.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -25,8 +26,9 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      // initialBinding: GeneralBindings(),
-      home: BottomNavBar(), // bottom nav bar is the entry point for app
+      initialBinding: GeneralBindings(),
+      // initialRoute: "/",
+      home: onBoarding_Screen(),
     );
   }
 }

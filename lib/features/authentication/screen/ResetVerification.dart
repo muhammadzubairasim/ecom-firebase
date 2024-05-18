@@ -1,3 +1,5 @@
+import 'package:ecom/features/authentication/controller/forgetPasswordController.dart';
+import 'package:ecom/features/authentication/screen/Login_Screen.dart';
 import 'package:ecom/utils/constants/image_strings.dart';
 import 'package:ecom/utils/constants/sizes.dart';
 import 'package:ecom/utils/constants/text_strings.dart';
@@ -6,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ResetVerification extends StatelessWidget {
-  const ResetVerification({super.key});
-
+  const ResetVerification({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +39,7 @@ class ResetVerification extends StatelessWidget {
                 ),
               ),
               Text(
-                "zubairasim7@gmai.com",
+                email ?? " ",
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               Padding(
@@ -56,11 +58,15 @@ class ResetVerification extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: TSizes.spaceBtwItems),
                     child: ElevatedButton(
-                        onPressed: () {}, child: Text(TTexts.tContinue)),
+                        onPressed: () => Get.offAll(() => const Login_Screen()),
+                        child: Text(TTexts.tContinue)),
                   )),
                 ],
               ),
-              TextButton(onPressed: () {}, child: Text(TTexts.resendEmail))
+              TextButton(
+                  onPressed: () => ForgetPasswordController.instance
+                      .resendPasswordResetEmail(email),
+                  child: Text(TTexts.resendEmail))
             ],
           ),
         ),
