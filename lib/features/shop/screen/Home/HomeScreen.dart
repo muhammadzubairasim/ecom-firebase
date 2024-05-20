@@ -52,7 +52,18 @@ class HomeScreen extends StatelessWidget {
                             .headlineSmall!
                             .apply(color: TColors.white),
                       ),
-                      Hortzontal_Scroll(),
+                      Hortzontal_Scroll(
+                        horizontalScrollIcons: [
+                          TImages.acerlogo,
+                          TImages.appleLogo,
+                          TImages.adidasLogo,
+                          TImages.jordanLogo,
+                          TImages.hermanMillerLogo,
+                          TImages.ikeaLogo,
+                          TImages.nikeLogo,
+                          TImages.zaraLogo,
+                        ],
+                      ),
                       SizedBox(
                         height: 20,
                       )
@@ -69,14 +80,57 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
+                child: Grid_Builder(
+              totalItemCount: 6,
+              itemInOneLine: 2,
+              cardTitleMain: [
+                "Sneakers",
+                "Shirt",
+                "Sneakers",
+                "Track Suit",
+                "Shirt",
+                "Jacket"
+              ],
+              store: "Nike",
+              imagePath: [
+                TImages.productImage19,
+                TImages.productImage61,
+                "assets/images/products/NikeAirJordonwhiteMagenta.png",
+                TImages.productImage25,
+                TImages.productImage69,
+                TImages.productImage67,
+              ],
+              endPrice: 200.0,
+              startPrice: 50.0,
+              wishListed: false,
+            )),
+          ),
+          ViewMore_Divider(title: "Popular Products"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
               child: Grid_Builder(
-                  cardTitleMain: "Nike Product-1",
+                  cardTitleMain: [
+                    "Shirt",
+                    "Collar Shirt",
+                    "Track Suit",
+                    "Jacket",
+                    "Track Suit",
+                    "Sneakers"
+                  ],
                   endPrice: 300,
-                  imagePath: TImages.productImage1,
+                  imagePath: [
+                    TImages.productImage5,
+                    TImages.productImage54,
+                    TImages.productImage24,
+                    TImages.productImage65,
+                    TImages.productImage25,
+                    TImages.productImage22
+                  ],
                   startPrice: 100,
                   store: "Nike"),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -86,7 +140,9 @@ class HomeScreen extends StatelessWidget {
 class Hortzontal_Scroll extends StatelessWidget {
   const Hortzontal_Scroll({
     super.key,
+    required this.horizontalScrollIcons,
   });
+  final List<String> horizontalScrollIcons;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +153,7 @@ class Hortzontal_Scroll extends StatelessWidget {
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount: 10,
+          itemCount: horizontalScrollIcons.length,
           itemBuilder: (_, index) {
             return Column(
               children: [
@@ -113,11 +169,11 @@ class Hortzontal_Scroll extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             color: Colors.white,
                           ),
-                          child: const Image(
-                            image: AssetImage(TImages.appleLogo),
+                          child: Image(
+                            image: AssetImage(horizontalScrollIcons[index]),
                             height: 50,
                             width: 50,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                             alignment: Alignment.center,
                           )),
                       Padding(
@@ -150,16 +206,18 @@ class ClippedPathHeader extends StatelessWidget {
   const ClippedPathHeader({
     super.key,
     required this.clippedPathSection,
+    this.bgColor = TColors.primary,
   });
 
   final Widget clippedPathSection;
+  final Color bgColor;
 
   @override
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: ClipPathWidget(),
       child: Container(
-        color: TColors.primary,
+        color: bgColor,
         child: Stack(
           children: [
             Custom_Circle(

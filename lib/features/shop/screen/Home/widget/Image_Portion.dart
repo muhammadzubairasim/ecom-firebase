@@ -1,3 +1,4 @@
+import 'package:ecom/common/widgets/WIshlist_Button.dart';
 import 'package:ecom/utils/constants/colors.dart';
 import 'package:ecom/utils/constants/image_strings.dart';
 import 'package:ecom/utils/device/device_utility.dart';
@@ -36,35 +37,11 @@ class Image_Portion extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-                child: Text(
-                  "${percetage}%",
-                  style: Theme.of(context).textTheme.bodyMedium!.apply(
-                        color: TColors.black,
-                      ),
-                ),
-              ),
-            ),
+            Yellow_Percentage_Button(percetage: percetage),
             Positioned(
               right: 0,
               top: 0,
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: TColors.white),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(wishListed ? Icons.favorite : Icons.favorite_outline ),
-                  color: wishListed ?  Colors.red : Colors.black  ,
-                ),
-              ),
+              child: Wishlist_Button(wishListed: wishListed,)
             )
           ],
         ),
@@ -72,3 +49,33 @@ class Image_Portion extends StatelessWidget {
     );
   }
 }
+
+class Yellow_Percentage_Button extends StatelessWidget {
+  const Yellow_Percentage_Button({
+    super.key,
+    required this.percetage,
+  });
+
+  final String percetage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.yellow,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding:
+            const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+        child: Text(
+          "${percetage}%",
+          style: Theme.of(context).textTheme.bodyMedium!.apply(
+                color: TColors.black,
+              ),
+        ),
+      ),
+    );
+  }
+}
+

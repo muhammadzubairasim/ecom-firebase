@@ -256,4 +256,21 @@ class TImages {
   static const String paytm = "assets/icons/payment_methods/paytm.png";
   static const String successfulPaymentIcon =
       "assets/icons/payment_methods/successful_payment_icon.png";
+  static String getImagePathForProduct(String productName) {
+    switch (productName.toLowerCase()) {
+      case 'sneakers':
+        return productImage19; // Or other relevant image paths
+      case 'shirt':
+        return productImage61;
+      case 'track suit':
+        return productImage25;
+      case 'jacket':
+        return productImage69;
+      case 'collar shirt':
+        return productImage67;
+      // Add more cases as needed
+      default:
+        return 'assets/images/default.png'; // Default image if none match
+    }
+  }
 }

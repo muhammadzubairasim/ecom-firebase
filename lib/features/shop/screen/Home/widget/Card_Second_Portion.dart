@@ -30,22 +30,38 @@ class Card_Second_Portion extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
-            Row(
-              children: [
-                Text(store),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Icon(
-                    Icons.verified,
-                    color: Colors.blue,
-                    size: TSizes.iconSm,
-                  ),
-                ),
-              ],
-            )
+            Brand_Verified(store: store)
           ],
         ),
       ),
+    );
+  }
+}
+
+class Brand_Verified extends StatelessWidget {
+  const Brand_Verified({
+    super.key,
+    required this.store,
+    this.verified = true
+  });
+
+  final String store;
+  final bool verified;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(store),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child:  verified ? Icon(
+            Icons.verified,
+            color: Colors.blue,
+            size: TSizes.iconSm,
+          ) : null,
+        ),
+      ],
     );
   }
 }

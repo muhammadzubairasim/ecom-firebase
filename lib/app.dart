@@ -1,5 +1,6 @@
 import 'package:ecom/common/widgets/BottomNavBar.dart';
 import 'package:ecom/common/widgets/Card_Widget.dart';
+import 'package:ecom/features/ProductDetail/Product_Detail.dart';
 import 'package:ecom/features/authentication/controller/onBoarding.dart';
 import 'package:ecom/features/authentication/screen/Email_verificationScreen.dart';
 import 'package:ecom/features/authentication/screen/ForgetPassword.dart';
@@ -8,6 +9,7 @@ import 'package:ecom/features/authentication/screen/ResetVerification.dart';
 import 'package:ecom/features/authentication/screen/Signup_Sceen.dart';
 import 'package:ecom/features/authentication/screen/VerificationSuccess.dart';
 import 'package:ecom/features/authentication/screen/onBoarding_screen.dart';
+import 'package:ecom/features/personalization/screen/Profile/Profile_Info.dart';
 import 'package:ecom/features/shop/screen/Home/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';

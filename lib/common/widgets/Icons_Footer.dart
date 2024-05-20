@@ -61,14 +61,6 @@ class Icons_Footer extends StatelessWidget {
                       : TColors.black),
               borderRadius: BorderRadius.circular(100),
             ),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Image(
-                width: TSizes.iconMd,
-                height: TSizes.iconMd,
-                image: AssetImage(TImages.facebook),
-              ),
-            ),
           )
         ],
       ),
