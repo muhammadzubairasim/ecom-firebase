@@ -7,7 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VerificationSuccess extends StatelessWidget {
-  const VerificationSuccess({super.key});
+  const VerificationSuccess({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.subtitle,
+    required this.onPressed,
+  });
+
+  final String image;
+  final String title;
+  final String subtitle;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {

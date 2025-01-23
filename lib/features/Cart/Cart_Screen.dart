@@ -27,7 +27,7 @@ class Cart_Screen extends StatelessWidget {
               separatorBuilder: (_, __) => SizedBox(
                 height: 30,
               ),
-              itemCount: 4,
+              itemCount: 1,
               itemBuilder: (_, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(
@@ -66,7 +66,7 @@ class Cart_Screen extends StatelessWidget {
 class Cart_Component_Header extends StatelessWidget {
    Cart_Component_Header({
     super.key,
-    this.counter = true
+    this.counter = true,
   });
   bool counter;
   @override

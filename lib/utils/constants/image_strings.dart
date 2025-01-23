@@ -57,6 +57,8 @@ class TImages {
       "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const String verifyIllustration =
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
+  static const String docker =
+      "assets/images/animations/141594-animation-of-docer.json";
 
   // -- OnBoarding Texts
   static const String onBoardingImage1 =
@@ -254,4 +256,21 @@ class TImages {
   static const String paytm = "assets/icons/payment_methods/paytm.png";
   static const String successfulPaymentIcon =
       "assets/icons/payment_methods/successful_payment_icon.png";
+  static String getImagePathForProduct(String productName) {
+    switch (productName.toLowerCase()) {
+      case 'sneakers':
+        return productImage19; // Or other relevant image paths
+      case 'shirt':
+        return productImage61;
+      case 'track suit':
+        return productImage25;
+      case 'jacket':
+        return productImage69;
+      case 'collar shirt':
+        return productImage67;
+      // Add more cases as needed
+      default:
+        return 'assets/images/default.png'; // Default image if none match
+    }
+  }
 }

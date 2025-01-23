@@ -28,7 +28,7 @@ class Card_Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> Get.to(Product_Detail()),
+      onTap: ()=> Get.to(Product_Detail(imgPath: imagePath,sPrice: startPrice, ePrice: endPrice,cardTitle: cardTitleMain,)),
       child: Container(
         // // alignment: Alignment.centerLeft,
         // width: TDeviceUtils.getScreenWidth(context) * 0.45 > 500

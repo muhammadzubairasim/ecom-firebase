@@ -39,11 +39,13 @@ class onBoarding_Screen extends StatelessWidget {
           Positioned(
               top: TDeviceUtils.getAppBarHeight() - 20,
               right: TSizes.defaultSpace,
-              child: TextButton(onPressed: () {
-
-                controller.skipPage();
-
-              }, child: Obx (()=>controller.currPageIndex.value < 2 ? const Text("Skip All") : const Text(""))))  ,
+              child: TextButton(
+                  onPressed: () {
+                    controller.skipPage();
+                  },
+                  child: Obx(() => controller.currPageIndex.value < 2
+                      ? const Text("Skip All")
+                      : const Text(" ")))),
           Positioned(
             bottom: TDeviceUtils.getBottomNavigationBarHeight(),
             left: TSizes.defaultSpace,

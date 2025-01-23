@@ -12,7 +12,12 @@ import 'package:ecom/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class Product_Detail extends StatelessWidget {
-  const Product_Detail({super.key});
+  const Product_Detail({super.key, required this.imgPath, required this.sPrice, required this.ePrice, required this.cardTitle});
+  final String imgPath ;
+  final double sPrice ;
+  final double ePrice ;
+  final String cardTitle ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class Product_Detail extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 70),
                       child: Center(
                           child: Custom_Image_Widget(
-                        imgPath: TImages.productImage1,
+                        imgPath: imgPath,
                         hight: 250,
                       )),
                     ),
@@ -67,7 +72,7 @@ class Product_Detail extends StatelessWidget {
                         width: TSizes.spaceBtwInputFields,
                       ),
                       Text(
-                        "\$100-\$300",
+                        "\$${sPrice}${ePrice != 0 ? "-" : ""}${ePrice != 0 ? "\$" +ePrice.toString() : ""}",
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       Expanded(
@@ -90,7 +95,7 @@ class Product_Detail extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "green nike sport shoes",
+                          cardTitle,
                           style: Theme.of(context).textTheme.labelMedium,
                         )
                       ],

@@ -26,7 +26,7 @@ class Card_Footer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "\$${sPrice}${ePrice != 0 ? "-" : ""}${ePrice != 0 ? "\$" +ePrice.toString() : ""}",
+              "\$${sPrice.toString()}${ePrice != 0 ? "-" : ""}${ePrice != 0 ? "\$" +ePrice.toString() : ""}",
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             Container(

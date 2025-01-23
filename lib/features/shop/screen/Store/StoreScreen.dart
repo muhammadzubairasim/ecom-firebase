@@ -10,25 +10,39 @@ import 'package:ecom/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 
 class StoreScreen extends StatelessWidget {
-  StoreScreen({super.key,
-  this.back = false
-  });
+  StoreScreen({super.key, this.back = false});
 
   final List<String> imagePaths = [
     TImages.jordanLogo,
     TImages.adidasLogo,
+    TImages.kenwoodLogo,
+    TImages.hermanMillerLogo,
     TImages.acerlogo,
-    TImages.appleLogo
+    TImages.appleLogo,
+
+
   ];
-  final List<String> titles = ["Jorden", "Addidas", "Acer", "Apple"];
+
+  final List<String> FeaturedBrandImages = [
+    TImages.jordanLogo,
+    TImages.adidasLogo,
+    TImages.kenwoodLogo,
+    TImages.hermanMillerLogo,
+  ];
+
+
+
+  final List<String> titles = ["Jorden", "Addidas", "Kenwood", "Herman"];
   List<String> subtitles = [
     "Jorden-store",
     "Addidas-store",
-    "Acer-store",
-    "Apple-store"
+    "Kenwood",
+    "herman-miller",
+    "Acer",
+    "Apple"
   ];
   List<Text> tabHeading = [
-    Text("Store"),
+    Text("Shoes"),
     Text("Furniture"),
     Text("Electronics"),
     Text("Cloths")
@@ -78,7 +92,7 @@ class StoreScreen extends StatelessWidget {
                         margin: EdgeInsets.symmetric(
                             horizontal: TSizes.defaultSpace),
                         child: GridView.builder(
-                            itemCount: imagePaths.length,
+                            itemCount: FeaturedBrandImages.length,
                             shrinkWrap: true,
                             // physics: NeverScrollableScrollPhysics(),
                             gridDelegate:
@@ -93,11 +107,12 @@ class StoreScreen extends StatelessWidget {
                                     crossAxisSpacing: 5),
                             itemBuilder: (_, index) {
                               return Store_Grid_Element(
-                                ImagePath: imagePaths[index],
+                                ImagePath: FeaturedBrandImages[index],
                                 title: titles[index],
                                 subtitle: subtitles[index],
                               );
                             }),
+
                       )
                     ],
                   ),
@@ -110,7 +125,7 @@ class StoreScreen extends StatelessWidget {
             body: TabBarView(
               // physics: AlwaysScrollableScrollPhysics(),
               children: [
-                GestureDetector(
+                GestureDetector(//shoes
                   child: Tabbar_Structure(
                     tabbarWidgetList: [
                       Store_tabbar_Card(
@@ -135,41 +150,72 @@ class StoreScreen extends StatelessWidget {
                       ),
                       ViewMore_Divider(title: "You Might Like "),
                       Grid_Builder(
-                          cardTitleMain: "Green Sports SHoes ",
+                          cardTitleMain: ["Green Sports SHoes "],
                           store: "Nike",
-                          imagePath: TImages.productImage1,
+                          imagePath: [TImages.productImage1,TImages.productImage2,TImages.productImage3,TImages.productImage4,TImages.productImage5,TImages.productImage6,TImages.productImage23,TImages.productImage12,],
                           endPrice: 100,
                           startPrice: 50),
                     ],
                   ),
                 ),
-                Tabbar_Structure(
+                Tabbar_Structure(// furniture
                   tabbarWidgetList: [
                     Store_tabbar_Card(
-                      imagePaths: imagePaths[0],
-                      titles: titles[0],
-                      subtitles: subtitles[0],
+                      imagePaths: imagePaths[2],
+                      titles: titles[2],
+                      subtitles: subtitles[2],
                       cardBottomImages: [
-                        TImages.productImage1,
-                        TImages.productImage2,
-                        TImages.productImage3
+                        TImages.productImage33,
+                        TImages.productImage34,
+                        TImages.productImage35
                       ],
                     ),
                     Store_tabbar_Card(
-                      imagePaths: imagePaths[1],
-                      titles: titles[1],
-                      subtitles: subtitles[1],
+                      imagePaths: imagePaths[3],
+                      titles: titles[3],
+                      subtitles: subtitles[3],
                       cardBottomImages: [
-                        TImages.productImage4,
-                        TImages.productImage5,
-                        TImages.productImage6
+                        TImages.productImage36,
+                        TImages.productImage37,
+                        TImages.productImage38,
                       ],
                     ),
                     ViewMore_Divider(title: "You Might Like "),
                     Grid_Builder(
-                        cardTitleMain: "Green Sports SHoes ",
+                        cardTitleMain: ["Green Sports SHoes "],
                         store: "Nike",
-                        imagePath: TImages.productImage1,
+                        imagePath: [TImages.productImage39,TImages.productImage40,TImages.productImage41,TImages.productImage42,TImages.productImage43,TImages.productImage44,TImages.productImage45,TImages.productImage46,],
+                        endPrice: 100,
+                        startPrice: 50),
+                  ],
+                ),
+                Tabbar_Structure(//electronics
+                  tabbarWidgetList: [
+                    Store_tabbar_Card(
+                      imagePaths: imagePaths[2],
+                      titles: titles[2],
+                      subtitles: subtitles[2],
+                      cardBottomImages: [
+                        TImages.productImage47,
+                        TImages.productImage48,
+                        TImages.productImage49
+                      ],
+                    ),
+                    Store_tabbar_Card(
+                      imagePaths: imagePaths[3],
+                      titles: titles[3],
+                      subtitles: subtitles[3],
+                      cardBottomImages: [
+                        TImages.productImage50,
+                        TImages.productImage51,
+                        TImages.productImage52
+                      ],
+                    ),
+                    ViewMore_Divider(title: "You Might Like "),
+                    Grid_Builder(
+                        cardTitleMain: ["ELectronics"],
+                        store: "Electronics",
+                        imagePath: [TImages.productImage53,TImages.productImage54,TImages.productImage55,TImages.productImage56,TImages.productImage57,TImages.productImage58,TImages.productImage59,TImages.productImage60,],
                         endPrice: 100,
                         startPrice: 50),
                   ],
@@ -178,60 +224,29 @@ class StoreScreen extends StatelessWidget {
                   tabbarWidgetList: [
                     Store_tabbar_Card(
                       imagePaths: imagePaths[0],
-                      titles: titles[0],
-                      subtitles: subtitles[0],
+                      titles: "Electronic",
+                      subtitles: "Electronic",
                       cardBottomImages: [
-                        TImages.productImage1,
-                        TImages.productImage2,
-                        TImages.productImage3
+                        TImages.productImage18,
+                        TImages.productImage19,
+                        TImages.productImage20
                       ],
                     ),
                     Store_tabbar_Card(
                       imagePaths: imagePaths[1],
-                      titles: titles[1],
-                      subtitles: subtitles[1],
+                      titles: "Electronic",
+                      subtitles: "Electronic",
                       cardBottomImages: [
-                        TImages.productImage4,
-                        TImages.productImage5,
-                        TImages.productImage6
+                        TImages.productImage21,
+                        TImages.productImage22,
+                        TImages.productImage23
                       ],
                     ),
                     ViewMore_Divider(title: "You Might Like "),
                     Grid_Builder(
-                        cardTitleMain: "Green Sports SHoes ",
+                        cardTitleMain: ["Green Sports SHoes "],
                         store: "Nike",
-                        imagePath: TImages.productImage1,
-                        endPrice: 100,
-                        startPrice: 50),
-                  ],
-                ),
-                Tabbar_Structure(
-                  tabbarWidgetList: [
-                    Store_tabbar_Card(
-                      imagePaths: imagePaths[0],
-                      titles: titles[0],
-                      subtitles: subtitles[0],
-                      cardBottomImages: [
-                        TImages.productImage1,
-                        TImages.productImage2,
-                        TImages.productImage3
-                      ],
-                    ),
-                    Store_tabbar_Card(
-                      imagePaths: imagePaths[1],
-                      titles: titles[1],
-                      subtitles: subtitles[1],
-                      cardBottomImages: [
-                        TImages.productImage4,
-                        TImages.productImage5,
-                        TImages.productImage6
-                      ],
-                    ),
-                    ViewMore_Divider(title: "You Might Like "),
-                    Grid_Builder(
-                        cardTitleMain: "Green Sports SHoes ",
-                        store: "Nike",
-                        imagePath: TImages.productImage1,
+                        imagePath: [TImages.productImage17,TImages.productImage26,TImages.productImage37,TImages.productImage42,TImages.productImage51,TImages.productImage65,TImages.productImage23,TImages.productImage52,],
                         endPrice: 100,
                         startPrice: 50),
                   ],
@@ -330,7 +345,6 @@ class Tabbar_widget extends StatelessWidget implements PreferredSize {
           context, TColors.black, TColors.white),
       padding: EdgeInsets.only(top: TSizes.defaultSpace),
       child: TabBar(
-          isScrollable: true,
           physics: const NeverScrollableScrollPhysics(),
           indicatorColor: TDeviceUtils.defaultColorIfDark(
               context, TColors.lightGrey, TColors.primary),

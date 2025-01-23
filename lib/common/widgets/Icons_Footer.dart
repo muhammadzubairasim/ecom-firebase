@@ -1,14 +1,17 @@
+import 'package:ecom/features/authentication/controller/login_controller.dart';
 import 'package:ecom/utils/constants/colors.dart';
 import 'package:ecom/utils/constants/image_strings.dart';
 import 'package:ecom/utils/constants/sizes.dart';
 import 'package:ecom/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Icons_Footer extends StatelessWidget {
   const Icons_Footer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwItems),
       child: Row(
@@ -31,7 +34,7 @@ class Icons_Footer extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () => controller.googleSignIn(),
               icon: const Image(
                 width: TSizes.iconMd,
                 height: TSizes.iconMd,
@@ -57,14 +60,6 @@ class Icons_Footer extends StatelessWidget {
                       ? TColors.grey
                       : TColors.black),
               borderRadius: BorderRadius.circular(100),
-            ),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Image(
-                width: TSizes.iconMd,
-                height: TSizes.iconMd,
-                image: AssetImage(TImages.facebook),
-              ),
             ),
           )
         ],

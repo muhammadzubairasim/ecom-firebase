@@ -17,7 +17,7 @@ class Header_AppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HeaderAppbar(
-      backArrow: null,
+      backArrow: false,
       customTitle: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

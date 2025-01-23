@@ -20,12 +20,12 @@ class Checkout extends StatelessWidget {
           child: Column(
             children: [
               ListView.separated(
-                  itemBuilder: (_, index) =>Cart_Component_Header(counter: false),
+                  itemBuilder: (_, index) =>Cart_Component_Header(counter: false , ),
                       shrinkWrap: true,
                   separatorBuilder: (_, __) => SizedBox(
                         height: TSizes.gridViewSpacing,
                       ),
-                  itemCount: 2),
+                  itemCount: 1),
               Container(
                 padding: EdgeInsets.symmetric(vertical: TSizes.defaultSpace/2 ,horizontal: TSizes.defaultSpace),
                 decoration: BoxDecoration(

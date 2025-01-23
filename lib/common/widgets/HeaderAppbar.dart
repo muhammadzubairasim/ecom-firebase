@@ -24,12 +24,12 @@ class HeaderAppbar extends StatelessWidget  implements PreferredSize{
       padding: const EdgeInsets.only(left: TSizes.defaultSpace, right: TSizes.defaultSpace , top: TSizes.defaultSpace),
       child: AppBar(
         automaticallyImplyLeading: backArrow!=false?true: false,
-        leading: backArrow != null
+        leading: backArrow != false
             ? IconButton(
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(Icons.arrow_back,color: TColors.white,),
+                icon: Icon(Icons.arrow_back,color:  TDeviceUtils.defaultColorIfDark(context, TColors.white, TColors.dark) ,),
                 highlightColor: Colors.white,
               )
             : leadingIcon != null

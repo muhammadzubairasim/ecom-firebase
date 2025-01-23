@@ -1,17 +1,31 @@
+import 'package:ecom/common/Controller/Email_Verification_Controller.dart';
+import 'package:ecom/features/authentication/authentication_repository.dart';
+import 'package:ecom/features/authentication/screen/Login_Screen.dart';
 import 'package:ecom/features/authentication/screen/VerificationSuccess.dart';
 import 'package:ecom/utils/constants/image_strings.dart';
 import 'package:ecom/utils/constants/sizes.dart';
 import 'package:ecom/utils/constants/text_strings.dart';
 import 'package:ecom/utils/device/device_utility.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Email_Verification_Screen extends StatelessWidget {
-  const Email_Verification_Screen({super.key});
+  const Email_Verification_Screen({super.key, required this.email});
 
+  final String? email;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(EmailVerificationController());
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              onPressed: () => AuthenticationRepository.instance.logout(),
+              icon: const Icon(CupertinoIcons.clear))
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -38,7 +52,7 @@ class Email_Verification_Screen extends StatelessWidget {
                 ),
               ),
               Text(
-                "zubairasim7@gmai.com",
+                email ?? '',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               Padding(
@@ -57,14 +71,15 @@ class Email_Verification_Screen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: TSizes.spaceBtwItems),
                     child: ElevatedButton(
-                        onPressed: () {
-                          Get.to(VerificationSuccess());
-                        },
+                        onPressed: () =>
+                            controller.checkEmailVerificationState(),
                         child: Text(TTexts.tContinue)),
                   )),
                 ],
               ),
-              TextButton(onPressed: () {}, child: Text(TTexts.resendEmail))
+              TextButton(
+                  onPressed: () => controller.SendEmailVerification(),
+                  child: Text(TTexts.resendEmail))
             ],
           ),
         ),

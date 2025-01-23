@@ -1,5 +1,6 @@
 import 'package:ecom/common/widgets/HeaderAppbar.dart';
 import 'package:ecom/common/widgets/ViewMore_Divider.dart';
+import 'package:ecom/features/authentication/controller/user_controller.dart';
 import 'package:ecom/features/personalization/screen/Profile/Profile_Info.dart';
 import 'package:ecom/features/shop/screen/Home/HomeScreen.dart';
 import 'package:ecom/utils/constants/colors.dart';
@@ -12,8 +13,14 @@ import 'package:get/get_navigation/get_navigation.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
+    final userController = UserController.instance;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -32,10 +39,10 @@ class ProfileScreen extends StatelessWidget {
                 child: ListTile(
                   leading: CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage(TImages.user),
+                    backgroundImage: userController.user.value.profilePicture is String !=null ? NetworkImage(userController.user.value.profilePicture) : null,
                   ),
-                  title: Text("Muhammad Zubair Asim" , style: Theme.of(context).textTheme.headlineSmall,),
-                  subtitle: Text("zubairasim7@gmail.com"),
+                  title: Text(userController.user.value.fullName , style: Theme.of(context).textTheme.headlineSmall,),
+                  subtitle: Text(userController.user.value.email),
                   trailing: IconButton(onPressed: (){  Get.to(()=> Profile_Info()); } , icon: Icon(Icons.edit_note), iconSize: TSizes.iconLg ,color: TColors.white )  ,
                 ),
               ),
